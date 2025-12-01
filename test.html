@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Jest Tests</title>
+
+    <!-- Jest Lite CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/jest-lite@1.0.0-alpha.4/dist/jest-lite.umd.js"></script>
+
+    <style>
+        body { font-family: Arial; }
+        #results { margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<h2>Модульные тесты Jest</h2>
+<div id="results"></div>
+
+<script src="script.js"></script>
+
+<script>
+    const { describe, test, expect, run } = jestLite;
+
+
+    describe("Проверка factorial()", () => {
+        test("factorial(5) должно быть 120", () => {
+            expect(factorial(5)).toBe(120);
+        });
+
+        test("factorial(0) должно быть 1", () => {
+            expect(factorial(0)).toBe(1);
+        });
+    });
+
+    
+    describe("Проверка findMax()", () => {
+        test("Максимум массива должен быть 7", () => {
+            expect(findMax([2, 7, 3])).toBe(7);
+        });
+    });
+
+
+    describe("Проверка findMaxFixed()", () => {
+        test("Корректно работает с отрицательными числами", () => {
+            expect(findMaxFixed([-5, -2, -9])).toBe(-2);
+        });
+    });
+
+    // Запуск тестов
+    run({ domElement: document.getElementById("results") });
+</script>
+
+</body>
+</html>
